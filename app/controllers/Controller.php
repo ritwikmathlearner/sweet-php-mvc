@@ -6,4 +6,11 @@ abstract class Controller {
     {
         require "../app/views/{$fileName}.php";
     }
+
+    static function loadModel($modelName)
+    {
+        require "../app/models/{$modelName}.php";
+        $modelInstance = new $modelName;
+        return $modelInstance;
+    }
 }
