@@ -4,8 +4,8 @@ require 'Controller.php';
 class IssueController extends Controller {
     public function index()
     {
-        $pdo = IssueController::loadModel('Issue');
-        $issues = $pdo->getAllIssues();
+        $modelInstance = IssueController::loadModel('Issue');
+        $issues = $modelInstance->getAllIssues();
         $data = [
             "issues" => $issues
         ];
@@ -14,8 +14,8 @@ class IssueController extends Controller {
 
     public function show($id)
     {
-        $pdo = IssueController::loadModel('Issue');
-        $issue = $pdo->getSingleIssue($id);
+        $modelInstance = IssueController::loadModel('Issue');
+        $issue = $modelInstance->getSingleIssue($id);
         $data = [
             "issue" => $issue
         ];

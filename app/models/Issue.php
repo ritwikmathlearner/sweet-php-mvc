@@ -1,33 +1,22 @@
 <?php
-require '../app/Database.php';
+require '../app/models/Model.php';
 
 class Issue {
-    private $db;
+    private $model;
+    public $tableName = 'issues';
 
     public function __construct()
     {
-        $database = new Database;
-        $this->db = $database->connect();
-    }
-
-    /**
-     * @return PDO
-     */
-    public function getDb()
-    {
-        return $this->db;
+        $this->model = new Model;
     }
 
     public function getAllIssues()
     {
-        $stmt = $this->db->query("SELECT * FROM issues");
-        return $stmt->fetchAll();
+        return $this->model->getAll();
     }
 
     public function getSingleIssue($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM issues WHERE id = ?");
-        $stmt->execute([$id]);
-        return $stmt->fetch();
+        return $this->model->getSingleById($id);
     }
 }
