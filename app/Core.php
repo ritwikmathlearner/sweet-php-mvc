@@ -10,12 +10,13 @@ class Core {
 
     public function __construct()
     {
-        $this->uri = trim(str_replace('issuetracker', '', trim($_SERVER['REQUEST_URI'], '/')), '/');
+        $this->uri = trim(str_replace('sweet-php-mvc', '', trim($_SERVER['REQUEST_URI'], '/')), '/');
     }
 
     public function checkRouteExists($routes)
     {
         $uriArr = explode('/', $this->uri);
+        var_dump($this->uri);
         $containsID = is_numeric(end($uriArr));
         if ( ! $containsID) {
             foreach ($routes as $key => $value) {
